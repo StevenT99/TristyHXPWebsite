@@ -5,37 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Countdown to Vanuata!</title>
     <style>
-      body, html {
+        body, html {
             height: 100%;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center; /* Centers the text container */
-            background: #fff;
+            align-items: center;
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Prevents scrollbars */
+            overflow: hidden;
+            background: url('vanuatu.jpg') center center fixed;
+            background-size: cover; /* Ensure the background covers the entire screen */
         }
-        .fireworks { 
+        .fireworks {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 10; /* Make fireworks appear in front */
+            z-index: 1; /* Fireworks behind everything */
         }
         .container {
-            position: absolute;
+            position: relative;
             text-align: center;
-            /* Allows the text to be visible with fireworks in front but could be semi-transparent */
-            color: black; /* Ensures text is visible, change as needed */
-            /* Not setting z-index, letting it be naturally below fireworks */
+            z-index: 2; /* Text in front of the fireworks */
+            color: black;
         }
         h1 {
-            margin: 0; /* Adjust as needed */
-            background: rgba(255, 255, 255, 0.5); /* Semi-transparent background for readability */
+            margin: 0;
+            background: rgba(255, 255, 255, 0.5);
             display: inline-block;
-            padding: 0.5em; /* Padding around text for better visibility */
+            padding: 0.5em;
         }
     </style>
 </head>
@@ -49,7 +49,7 @@
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
     <script>
         // Countdown logic
-        const countdownDate = new Date("2024-07-08").getTime(); // Set your target date here
+        const countdownDate = new Date("2024-07-08").getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -66,7 +66,6 @@
 
         // Fireworks logic
         const container = document.querySelector('.fireworks');
-        // Note the adjustment for accessing Fireworks as a property of the default export
         const fireworks = new Fireworks.default(container, { /* options */ });
         fireworks.start();
     </script>
